@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practice html</title>
+  </head>
+  <body>
+<main>
+        <h1>Welcome to My Website</h1>  
+    </main>
+<iframe id="youTubeFrame" width="560" height="315" src="https://www.youtube.com/embed/X-5hyKZAvAA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+<form id="form">
+  <label for="fname">Url:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <button onclick="document.getElementById('fname').value = ''">Clear Url</button>
+  <input type="submit" value="Play">
+</form>
+<script>
+const form = document.getElementById('form')
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  let headder = "https://www.youtube.com/embed/"
+  let url = form.elements['fname'].value.trim()
+  console.log([url.indexOf("="),typeof url.indexOf("=")])
+  if (url.indexOf("=") == -1){
+    videoId = url.substring(17)
+    console.log(["hello1",videoId])
+  }else{
+    videoIdArray = url.split("=")
+    videoId = videoIdArray.at(-1)
+    console.log(["hello2",videoId])
+  }
+  let embededUrl = headder + videoId
+  document.getElementById("youTubeFrame").src=embededUrl;
+  console.table([url, embededUrl]);
+})
+</script>
+
+
+</html>
