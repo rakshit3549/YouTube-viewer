@@ -33,11 +33,8 @@
             navigator.clipboard.readText()
                 .then(
                     cliptext =>
-                    (document.getElementById('urlId').value = cliptext.trim()),
-                     document.getElementById("play").click(),
-                     err => console.log(err)
-                );
-            
+                    (document.getElementById('urlId').value = cliptext.trim()))
+                    .then(() => document.getElementById("play").click());
         }
 
         const forms = document.getElementById('forms');
