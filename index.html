@@ -34,9 +34,10 @@
                 .then(
                     cliptext =>
                     (document.getElementById('urlId').value = cliptext.trim()),
-                    err => console.log(err)
+                     document.getElementById("play").click(),
+                     err => console.log(err)
                 );
-            document.getElementById("play").click();
+            
         }
 
         const forms = document.getElementById('forms');
