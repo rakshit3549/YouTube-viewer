@@ -33,7 +33,7 @@
             navigator.clipboard.readText()
                 .then(
                     cliptext =>
-                    (document.getElementById('urlId').value = cliptext.trim),
+                    (document.getElementById('urlId').value = cliptext.trim()),
                     err => console.log(err)
                 );
             document.getElementById("play").click();
