@@ -5,37 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Practice html</title>
+    <title>Thank Me Later </title>
+    <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/32040292">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
 </head>
 
 <body>
-    <main>
-        <h1>Welcome to My Website</h1>
-    </main>
-    <iframe id="youTubeFrame" width="560" height="315" src="https://www.youtube.com/embed/X-5hyKZAvAA"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
+    <h1 style="text-align:center; width:100%;font-family: cursive;" >Where there is a will there's a Way</h1>
+    
+    <div style="padding-left:200px">
+        <iframe id="youTubeFrame" width="871" height="490" src="https://www.youtube.com/embed/X-5hyKZAvAA"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
         <br>
-    <form id="forms"> 
-        <label for="urlId">Url:</label> 
-        <input type="text" id="urlId" name="urlId">
-        <input id="play" type="submit" value="Play"> </form>
+        <form id="forms">
+            <label for="urlId">Url:</label>
+            <input type="text" id="urlId" name="urlId">
+            <input id="play" type="submit" value="Play">
+        </form>
         <br>
-        <button
-            onclick="cleanAndPaste()">Clear, Past and Play
-        </button> 
+        <button onclick="cleanAndPaste()">Past From Clipboard and Play</button>
+    </div>
     <script>
         function cleanAndPaste() {
             navigator.clipboard.readText()
                 .then(
                     cliptext =>
-                    (console.log(cliptext),
-                    document.getElementById('urlId').value = cliptext.trim),
+                    (document.getElementById('urlId').value = cliptext.trim),
                     err => console.log(err)
                 );
-            // document.getElementById('urlId').value = "https://www.youtube.com/watch?v=y45hsd2AOpw"
             document.getElementById("play").click();
         }
 
@@ -45,27 +45,23 @@
             let header = "https://www.youtube.com/embed/";
             let url = forms.elements['urlId'].value;
             if ((url == "") || (url == "\n")) {
-                console.log("Empty Url");
+                alert("Enter Video Url");
                 return
             }
             url = url.trim();
-            console.log([url.indexOf("="), typeof url.indexOf("=")]);
             if (url.indexOf(".be/") != -1) {
                 videoId = url.substring(17);
-                console.log(["hello1", videoId]);
             } else if ((url.indexOf("?v=") > 0)) {
                 videoIdArray = url.split(/[=,&]+/);
-                if(videoIdArray.length < 1)
+                if (videoIdArray.length < 1)
                     return
                 videoId = videoIdArray.at(1);
-                console.log(["hello2", videoId]);
-            } else{
-                console.log("link not correct");
+            } else {
+                alert("Youtube link incorrect");
                 return
             }
             let embeddedUrl = header + videoId;
             document.getElementById("youTubeFrame").src = embeddedUrl;
-            console.table([url, embeddedUrl]);
         })
     </script>
 
