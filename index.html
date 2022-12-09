@@ -5,39 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Thank Me Later </title>
+    <title>Happy Learning 😜 </title>
     <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/32040292">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
 </head>
 
-<body>
-    <h1 style="text-align:center; width:100%;font-family: cursive;" >Where there is a will there's a Way</h1>
-    
-    <div style="padding-left:200px">
-        <iframe id="youTubeFrame" width="871" height="490" src="https://www.youtube.com/embed/X-5hyKZAvAA"
+<body style="margin: 0;">
+    <p style="position: fixed; bottom: 10px;right:10px">- Rakshit😎</p>
+    <h2 style="text-align:center; width:100%;font-family: cursive; margin: 2px auto;"> Video Player 2.0</h2>
+
+    <div style=" padding:0 5%;">
+        <iframe id="youTubeFrame" width="100%" height="530px" src="https://www.youtube.com/embed/_uL2btACZuU"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
-        <br>
-        <form id="forms">
-            <label for="urlId">Url:</label>
-            <input type="text" id="urlId" name="urlId">
-            <input id="play" type="submit" value="Play">
-        </form>
-        <br>
-        <button onclick="cleanAndPaste()">Past From Clipboard and Play</button>
+
+        <div style="padding: 3px; margin: 3px 3px; float: left; border: 1px solid black; border-radius: 5px; border-style:solid;">
+            <div style="display: inline;">
+                <div style="float: left; margin-right: 5px;">
+                    <form id="urlForm">
+                        <label for="urlId">Url:</label>
+                        <input type="text" id="urlId" name="urlId">
+                        <input style="font-weight:bold;" id="play" type="submit" value="Play">
+                    </form>
+                </div>
+
+                <div style="float: left;">
+                    <button  onclick="cleanAndPaste()">Past From Clipboard and <span style="font-weight:bold;">Play</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script>
         function cleanAndPaste() {
             navigator.clipboard.readText()
-                .then(
-                    cliptext =>
-                    (document.getElementById('urlId').value = cliptext.trim()))
-                    .then(() => document.getElementById("play").click());
+                 .then(
+                 cliptext =>
+                     (document.getElementById('urlId').value = cliptext.trim()))
+                     .then(() => document.getElementById("play").click());
         }
 
-        const forms = document.getElementById('forms');
+        const forms = document.getElementById('urlForm');
         forms.addEventListener('submit', (event) => {
             event.preventDefault();
             let header = "https://www.youtube.com/embed/";
